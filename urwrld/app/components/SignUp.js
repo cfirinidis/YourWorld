@@ -4,19 +4,36 @@ import{
 	Text,
 	View,
 	TextInput,
+	TouchableOpacity,
+	KeyboardAvoidingView,
+
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+
 
 export default class SignUp extends React.Component {
+
+constructor(props){
+		super(props);
+		this.state =  {
+			username: '',
+			password: '',
+			email: '',
+		}
+	}
+
 
 	render() {
 		return(
 
+		<KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
+	
 			<View style={styles.container}>
 
-				<Text style={styles.header}> Signup Page</Text>
+				<Text style={styles.header}> urwrld Signup </Text>
 
 				<TextInput
-					style={styles.textInput} placeholder='EMAIL'
+					style={styles.textInput} placeholder='Username'
 					onChangeText={ (username)=> this.setState({username}) }
 					underlineColorAndroid= 'transparent'
 					/>
@@ -28,14 +45,54 @@ export default class SignUp extends React.Component {
 					/>
 
 				<TextInput
-					style={styles.textInput} placeholder='Username'
-					onChangeText={ (username)=> this.setState({username}) }
+					style={styles.textInput} placeholder='Email'
+					onChangeText={ (email)=> this.setState({email}) }
 					underlineColorAndroid= 'transparent'
 					/>
 
+					<TouchableOpacity
+					style={styles.btn}
+					onPress={this.UserRegistrationFunction}>
+					<Text>SIGN UP </Text>
+				</TouchableOpacity>
 
 			</View>
+
+		</KeyboardAvoidingView>
 		);
+	}
+
+
+UserRegistrationFunction = () => {
+		const { username } = this.state ;
+		const { password } = this.state ;
+		const { email } = this.state ;
+
+	
+
+		fetch('http://146.95.77.44:3000/SignUp', { // sync IP address to expo application
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: this.state.username,
+				password: this.state.password,
+				email: this.state.email,
+			})
+		})
+
+		.then ((response) => response.json())
+		.then ((res) => {
+			if(res.success === true){
+				this.props.navigation.navigate('Congrats');
+			}
+			else{
+				alert(res.message);
+			}
+		})
+		.done();
 	}
 }
 
@@ -59,7 +116,7 @@ const styles = StyleSheet.create({
 	},
 	textInput: {
 		alignSelf: 'stretch',
-		padding: 16,
+		padding: 7,
 		marginBottom: 20,
 		backgroundColor: '#fff',
 	},

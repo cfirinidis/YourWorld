@@ -3,23 +3,40 @@ import{
 	StyleSheet,
 	Text,
 	View,
+	TextInput,
+	KeyboardAvoidingView,
+	TouchableOpacity,
+	AsyncStorage,
 } from 'react-native';
 import Login from './Login';
 import SignUp from './SignUp';
 
-export default class Profile extends React.Component {
+export default class Congrats extends React.Component {
 
 	render() {
 		return(
+		<KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
 
 			<View style={styles.container}>
 
-				<Text style={styles.header}> "Welcome to Profile Page" </Text>
+				<Text style={styles.header}> 'Congratulations! ' </Text>
 
-				</View>
+				<TouchableOpacity
+					style={styles.Congrats}
+					onPress={this.Profile}>
+					<Text> "Continue to Profile" </Text>
+				</TouchableOpacity>
+
+			</View>
+			</KeyboardAvoidingView>
+
 		);
 	}
 
+
+Profile = () => {
+		this.props.navigation.navigate('Profile');
+	}
 
 }
 
@@ -53,9 +70,8 @@ const styles = StyleSheet.create({
 		padding:20,
 		alignItems: 'center',
 	},
-	SignUp: {
-		//fontSize: 18,
-		marginTop: 60,
+	Congrats: {
+		marginTop: 10,
 		//color: '#fff',
 		//fontWeight: 'bold',
 		},

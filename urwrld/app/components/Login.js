@@ -63,19 +63,19 @@ export default class Login extends React.Component {
 					<Text> "Don't have an Account? SignUp!" </Text>
 				</TouchableOpacity>
 					
-
 				</View>
 
 			</KeyboardAvoidingView>
 		);
 	}
-	SignUp = () =>{
+
+	SignUp = () => {
 		this.props.navigation.navigate('SignUp');
 	}
 			
-	login = ()=> {
+	login = () => {
 
-		fetch('http://146.95.78.78:3000/users', {// sync IP address to expo application
+		fetch('http://146.95.77.44:3000/users', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
