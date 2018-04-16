@@ -1,0 +1,32 @@
+Some tips for developing with react native. 
+
+Run npm start while in react native directory. Open expo link on iphone with exp:// link in browser. 
+
+common git commands:
+
+git checkout -b name_of_newbranch this is to switch to branches or create a new one
+
+git status tells you which branch you are currently in
+
+git add . (with the period) adds all newly edited files to be commited
+
+git commit -m "type msg for commit"
+
+git push origin branch_name pushes to your branch
+
+
+
+******************************************************
+
+FOR CHRIS BURGER Branch
+
+
+******************************************************
+
+Attempting to use django and django rest framework coede I have to link up to backend.
+
+I need to create the user models, profile model, park model, to save in our database. 
+
+will use sqllite to store objects with django. 
+
+
