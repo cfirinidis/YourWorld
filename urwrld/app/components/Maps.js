@@ -3,36 +3,25 @@ import{
 	StyleSheet,
 	Text,
 	View,
-	TouchableOpacity,
 } from 'react-native';
 import MapView from 'react-native-maps'
 import Login from './Login';
 import SignUp from './SignUp';
-import Maps from './Maps';
+import Profile from './Profile';
 
-export default class Profile extends React.Component {
+export default class Maps extends React.Component {
 
 	render() {
 		return(
-			
 
 			<View style={styles.container}>
 
-				<Text style={styles.header}> "Welcome to Profile Page!" </Text>
+				<Text style={styles.header}> "Map will go HERE" </Text>
 
-				<TouchableOpacity
-					style={styles.Congrats}
-					onPress={this.Maps}>
-					<Text> "Check Map" </Text>
-				</TouchableOpacity>
 
 
 				</View>
 		);
-	}
-
-	Maps = () => {
-		this.props.navigation.navigate('Maps');
 	}
 
 
@@ -74,4 +63,4 @@ const styles = StyleSheet.create({
 		//color: '#fff',
 		//fontWeight: 'bold',
 		},
-});		
+});
