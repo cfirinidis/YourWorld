@@ -8,12 +8,7 @@ import{
 	TouchableOpacity,
 	AsyncStorage,
 } from 'react-native';
-<<<<<<< HEAD
 import { StackNavigator } from 'react-navigation'
-=======
-import Login from './Login';
-import SignUp from './SignUp';
->>>>>>> c4a6818967c477f8d22db0b623dd4ff399e58504
 
 export default class Profile extends React.Component {
 
@@ -43,7 +38,6 @@ export default class Profile extends React.Component {
 
 			<View style={styles.container}>
 
-<<<<<<< HEAD
 				<Text style={styles.header}>urwrld</Text>
 
 				<TextInput
@@ -51,9 +45,6 @@ export default class Profile extends React.Component {
 					onChangeText={ (hobby)=> this.setState({hobby}) }
 					underlineColorAndroid= 'transparent'
 					/>
-=======
-				<Text style={styles.header}> "Welcome to Profile Page" </Text>
->>>>>>> c4a6818967c477f8d22db0b623dd4ff399e58504
 
 				<TextInput
 					style={styles.textInput} placeholder='Age'
@@ -73,7 +64,6 @@ export default class Profile extends React.Component {
 		);
 	}
 
-<<<<<<< HEAD
 	save = () => {
 
 		fetch('http://146.95.77.44:3000/users', {// sync IP address to expo application
@@ -101,9 +91,6 @@ export default class Profile extends React.Component {
 		})
 		.done();
 	}
-=======
-
->>>>>>> c4a6818967c477f8d22db0b623dd4ff399e58504
 }
 
 const styles = StyleSheet.create({
