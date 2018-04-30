@@ -70,7 +70,7 @@ UserRegistrationFunction = () => {
 
 	
 
-		fetch('http://146.95.77.44:3000/SignUp', { // sync IP address to expo application
+		fetch('http://146.95.39.245:3000/SignUp', { // sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

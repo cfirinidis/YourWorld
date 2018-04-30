@@ -20,16 +20,16 @@ export default class Profile extends React.Component {
 		}
 	}
 
-	componentDidMount(){ //checks is user is logged in
-		this._loadInitialState().done();
-	}
-	_loadInitialState = async ()=> {
+	// componentDidMount(){ //checks is user is logged in
+	// 	this._loadInitialState().done();
+	// }
+	// _loadInitialState = async ()=> {
 
-		var value = await AsyncStorage.getItem('user');
-		if(value !== null){
-			this.props.navigation.navigate('Profile');
-		}
-	}
+	// 	var value = await AsyncStorage.getItem('user');
+	// 	if(value !== null){
+	// 		this.props.navigation.navigate('Profile');
+	// 	}
+	// }
 
 
 	render() {
@@ -57,8 +57,19 @@ export default class Profile extends React.Component {
 					onPress={this.save}>
 					<Text>SAVE </Text>
 				</TouchableOpacity>
+
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.friendsList}>
+					<Text>Go To Friends List </Text>
+				</TouchableOpacity>
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.parkPlaces}>
+					<Text>View Park Places</Text>
+				</TouchableOpacity>
 					
-				</View>
+			</View>
 
 			</KeyboardAvoidingView>
 		);
@@ -66,7 +77,7 @@ export default class Profile extends React.Component {
 
 	save = () => {
 
-		fetch('http://146.95.77.44:3000/users', {// sync IP address to expo application
+		fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -90,6 +101,14 @@ export default class Profile extends React.Component {
 			}
 		})
 		.done();
+	}
+
+	friendsList = () => {
+		this.props.navigation.navigate('Friends');
+	}
+
+	parkPlaces = () => {
+		this.props.navigation.navigate('Places');
 	}
 }
 
