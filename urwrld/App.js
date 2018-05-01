@@ -12,6 +12,7 @@ const Application = StackNavigator({
   Profile: { screen: Profile },
   SignUp: {screen: SignUp},
   Congrats: {screen: Congrats},
+  
   Maps: {screen: Maps}
 
   }, {

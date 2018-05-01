@@ -1,13 +1,11 @@
 import React from 'react';
-import{
-	StyleSheet,
-	Text,
-	View,
-} from 'react-native';
+import{Text, View, Button, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import MapView from 'react-native-maps'
 import Login from './Login';
 import SignUp from './SignUp';
 import Profile from './Profile';
+
 
 const styles = StyleSheet.create({
   container: {
