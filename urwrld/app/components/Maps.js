@@ -1,69 +1,107 @@
 import React from 'react';
-import{Text, View, Button, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import{
+	StyleSheet,
+	Text,
+	View,
+  Dimensions,
+  AppRegistry,
+} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import MapView from 'react-native-maps'
 import Login from './Login';
 import SignUp from './SignUp';
 import Profile from './Profile';
+import { Callout } from 'react-native-maps';
+import { Marker } from 'react-native'
+//import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+
+
+let { width, height } = Dimensions.get('window');
+
+const ASPECT_RATIO = width / height;
+const LATITUDE = 0;
+const LONGITUDE = 0;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+
 
 export default class Maps extends React.Component {
 
-	render() {
-		return(
+  constructor() {
+    super();
 
-			<View style={styles.container}>
+    this.state = {
+      region: {
+        latitude: LATITUDE,
+        longitude: LONGITUDE,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      }
+    };
+  }
 
-				<Text style={styles.header}> "Map will go HERE" </Text>
-				<TouchableOpacity style={styles.btn} onPress={this.parkPlaces}>
-					    <Text>Back to Profile page </Text>
-				</TouchableOpacity>
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        this.setState({
+          region: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+          }
+        });
+      },
+    (error) => console.log(error.message),
+    { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+    );
+    
+    // this.watchID = navigator.geolocation.watchPosition(
+    //   position => {
+    //     this.setState({
+    //       region: {
+    //         latitude: position.coords.latitude,
+    //         longitude: position.coords.longitude,
+    //         latitudeDelta: LATITUDE_DELTA,
+    //         longitudeDelta: LONGITUDE_DELTA,
+    //       }
+    //     });
+    //   }
+    // );
+  }//component did mount
 
+  componentWillUnmount() {
+    navigator.geolocation.clearWatch(this.watchID);
+  }
 
-				</View>
-		);
-	}
-
-	parkPlaces = () => {
-		this.props.navigation.navigate('Places');
-	}
-
-
+  render() {
+    return (
+      <MapView
+      //  provider={ PROVIDER_GOOGLE }
+        style={ styles.container }
+       // customMapStyle={ RetroMapStyles }
+        showsUserLocation={ true }
+        region={ this.state.region }
+        onRegionChange={ region => this.setState({region}) }
+        onRegionChangeComplete={ region => this.setState({region}) }
+      >
+        <MapView.Marker
+          coordinate={ this.state.region }
+        />
+      </MapView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-	wrapper: {
-		flex: 1,
-	},
-	container: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'center',
-		backgroundColor: '#dc6900',
-		paddingLeft: 40,
-		paddingRight: 40,
-	},
-	header: {
-		fontSize: 24,
-		marginBottom: 60,
-		color: '#fff',
-		fontWeight: 'bold',
-	},
-	textInput: {
-		alignSelf: 'stretch',
-		padding: 16,
-		marginBottom: 20,
-		backgroundColor: '#fff',
-	},
-	btn: {
-		alignSelf: 'stretch',
-		backgroundColor: '#d4d8d4',
-		padding:20,
-		alignItems: 'center',
-	},
-	SignUp: {
-		//fontSize: 18,
-		marginTop: 60,
-		//color: '#fff',
-		//fontWeight: 'bold',
-		},
+  container: {
+    height: '100%',
+    width: '100%',
+  }
 });
+
+
+AppRegistry.registerComponent('Maps', () => Maps);
+
+
+  

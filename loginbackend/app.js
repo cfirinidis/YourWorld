@@ -6,7 +6,7 @@ var logger = require('morgan');
 var mysql = require('mysql');
 
 var users = require('./routes/users');
-var Signup = require('./routes/Signup'); // added for signup
+var SignUp = require('./routes/SignUp'); // added for signup
 var index = require('./routes/index');
 
 
@@ -24,7 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/Signup', Signup);
+app.use('/SignUp', SignUp); // added 2
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

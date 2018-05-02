@@ -23,6 +23,9 @@
     "express": "^4.16.3",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-google-places": "^2.5.0",
+    "react-native-google-play-game-services": "^1.0.0",
+    "react-native-maps": "^0.21.0",
     "react-navigation": "^1.5.8"
   },
   "description": "This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).",
