@@ -75,7 +75,7 @@ export default class Login extends React.Component {
 			
 	login = () => {
 
-		fetch('http://146.95.79.164:3000/users', {// sync IP address to expo application
+		fetch('http://146.95.79.173:3000/users', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
