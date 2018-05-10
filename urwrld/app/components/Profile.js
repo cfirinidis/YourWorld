@@ -10,6 +10,7 @@ import{
 } from 'react-native';
 import { StackNavigator } from 'react-navigation'
 
+
 export default class Profile extends React.Component {
 
 	constructor(props){
@@ -77,7 +78,7 @@ export default class Profile extends React.Component {
 
 	save = () => {
 
-		fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
+		fetch('http://146.95.36.118:3000/users', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

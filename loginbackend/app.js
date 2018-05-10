@@ -8,6 +8,7 @@ var mysql = require('mysql');
 var users = require('./routes/users');
 var Signup = require('./routes/Signup'); // added for signup
 var index = require('./routes/index');
+var markers = require('./routes/markers'); // added for the post command that we do into 
 
 
 var app = express();
@@ -25,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/Signup', Signup);
+app.use('/markers', markers); // For marker file, make sure this works
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

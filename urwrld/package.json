@@ -23,6 +23,7 @@
     "express": "^4.16.3",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-geo-fencing": "^0.1.0",
     "react-navigation": "^1.5.8"
   },
   "description": "This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).",
