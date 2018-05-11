@@ -21,8 +21,10 @@
   "dependencies": {
     "expo": "^25.0.0",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-geo-fencing": "^0.1.0",
     "react-native-google-places": "^2.5.0",
     "react-native-google-play-game-services": "^1.0.0",
     "react-native-maps": "^0.21.0",

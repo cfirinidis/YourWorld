@@ -8,23 +8,34 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: 'Knicks',
 	database: 'users',
+
 });
 
+
+console.log("here");
+	
 router.post('/', function(req, res, next) {
   
-	var username = req.body.username;
-	var password = req.body.password;
-	var email = req.body.email;
+	var lat = req.body.lat;
+	var lng = req.body.lng;
+	console.log(lat);
 
-
+	
 	connection.query(
-		"INSERT INTO user ( username, password, email) VALUES (?, ?, ? )",
-		[username, password, email ], function(err, row, field){
+
+		"UPDATE user SET lat = ? WHERE lat= ?",
+		[lat, lat],
+		"UPDATE user SET lng =? WHERE lng = ?"
+		[lng, lng],
+		 function(err, row, field){
 			if(err){
 				
 				console.log(err);
-				res.send({'success': false, 'message': 'Could not connect to DB'});
+				res.send({'success': false, 'message': 'Could not update location'});
 			}
+			// if(row.length > 0){
+			// 	res.send({ 'success': true, 'user': row[0].username});
+			// }
 			else{
 		
 			res.send({ 'success': true});
@@ -32,5 +43,6 @@ router.post('/', function(req, res, next) {
 
 		});
 });
+
 
 module.exports = router;

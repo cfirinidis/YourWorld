@@ -17,7 +17,8 @@ export default class Profile extends React.Component {
 
 			<View style={styles.container}>
 
-				<Text style={styles.header}> "Welcome to Profile Page!" </Text>
+				<Text style={styles.header}>
+				  Welcome to Profile Page!</Text>
 
 				<TouchableOpacity
 					style={styles.Congrats}

@@ -67,7 +67,7 @@ export default class Login extends React.Component {
 
 			</KeyboardAvoidingView>
 		);
-	}
+	}//render
 
 	SignUp = () => {
 		this.props.navigation.navigate('SignUp');
@@ -75,7 +75,7 @@ export default class Login extends React.Component {
 			
 	login = () => {
 
-		fetch('http://146.95.79.173:3000/users', {// sync IP address to expo application
+		fetch('http://146.95.78.169:3000/users', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -99,7 +99,7 @@ export default class Login extends React.Component {
 			}
 		})
 		.done();
-	}
+	}//end of login
 }
 
 const styles = StyleSheet.create({
