@@ -1,4 +1,3 @@
-
 import React from 'react';
 import{
     StyleSheet,
@@ -62,11 +61,11 @@ export default class Maps extends React.Component {
           },
 
         });
-        let pointXCoordinate = position.coords.latitude;
-        let pointYCoordinate = position.coords.longitude;
+        let pointXCoordinateDidMount = position.coords.latitude;
+        let pointYCoordinateDidMount = position.coords.longitude;
 
-        console.log('Heres the user location x coordinate: ' + pointXCoordinate);
-        console.log('Heres the user location y coordinate: ' + pointYCoordinate);
+        console.log('In ComponentDidMount: Heres the user location x coordinate: ' + pointXCoordinate);
+        console.log('In ComponeneDidMount: Heres the user location y coordinate: ' + pointYCoordinate);
       },
     (error) => console.log(error.message),
     { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
@@ -88,6 +87,8 @@ export default class Maps extends React.Component {
     //   }
     // );
 
+    
+
     if(this._isInPolygon(this.state.region.latitude, this.state.region.longitude)){
       console.log('user is at hunter college');
     }else{
@@ -104,8 +105,8 @@ export default class Maps extends React.Component {
   _isInPolygon = (pointXCoordinate, pointYCoordinate) => {
  
 
-    console.log('Heres the user location x coordinate: ' + pointXCoordinate);
-    console.log('Heres the user location y coordinate: ' + pointYCoordinate);
+    console.log('In _isInPolygon function: Heres the user location x coordinate: ' + pointXCoordinate);
+    console.log('In _isInPolygon functoin: Heres the user location y coordinate: ' + pointYCoordinate);
 
     //Euclidean algorithm(from pythagorean's theorem)
     var xAxisDistance = Math.pow((40.7685 - pointXCoordinate), 2);
@@ -222,4 +223,3 @@ const styles = StyleSheet.create({
 
 
 AppRegistry.registerComponent('Maps', () => Maps);
-

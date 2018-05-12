@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
 
 	connection.query(
 			//(?, ?, ?) prevents SQL injection
-		"INSERT INTO marker (username , latitude, longitude, ) VALUES (?, ?, ?, ?, ?)",
+		"INSERT INTO marker (username , latitude, longitude, title, subtitle) VALUES (?, ?, ?, ?, ?)",
 		[user_id, latitude, longtitude, title, subtitle], function(err, row, field){
 			if(err){
 				

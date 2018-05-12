@@ -8,7 +8,9 @@ import Congrats from './app/components/Congrats';
 import Maps from './app/components/Maps';   
 import Friends from './app/components/Friends';
 import Places from './app/components/Places'
+import Checkin from './app/components/Checkin'
 import Tutorial from './app/components/Tutorial'
+
 
 const Application = StackNavigator({
   /*  Tutorial: {screen: Tutorial},    testing if Map.js works   */
@@ -16,6 +18,7 @@ const Application = StackNavigator({
   Profile: { screen: Profile },
   SignUp: {screen: SignUp},
   Congrats: {screen: Congrats},
+  Checkin: {screen: Checkin},
   Maps: {screen: Maps},
   Friends: {screen: Friends},
   Places: {screen: Places}

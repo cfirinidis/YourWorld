@@ -1,39 +1,40 @@
 import React from 'react';
 import {Text, View, Button, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Profile from './Profile';
 
 export default class Places extends React.Component {
     //Not sure if needed
     static navigationOptions = {
-        title: 'Maps',
+        title: 'Profile',
     };
     
     render(){
         return(
             <KeyboardAvoidingView behavior = 'padding' style={styles.wrapper}>
                 <View style={styles.container}>
-                    <Text style={styles.header}>Friends List </Text>
+                    <Text style={styles.header}>Location Name {/*Put location name   */}</Text> 
                     <TouchableOpacity
                         style={styles.btn}
-                        onPress={this.Back}>
+                        onPress={this.Profile}>
                         <Text>Back to Profile page </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.btn}
-                        onPress={this.Maps}>
-                        <Text>Go to Maps </Text>
+                         onPress={this.Profile}>  
+                        <Text>Checkout {/*Add functionality for checkout  */}</Text> 
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
 
         )
     }
-    Back = () => {
+    Profile = () => {
         this.props.navigation.navigate('Profile');
     }
-    Maps = () => {
-        this.props.navigation.navigate('Maps');
-    }
+    // Maps = () => {
+    //     this.props.navigation.navigate('Maps');
+    // }
 }
 
 const styles = StyleSheet.create({

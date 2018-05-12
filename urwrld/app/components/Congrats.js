@@ -11,6 +11,7 @@ import{
 import Login from './Login';
 import SignUp from './SignUp';
 
+//Welcome Page
 export default class Congrats extends React.Component {
 
 	render() {
@@ -24,7 +25,13 @@ export default class Congrats extends React.Component {
 				<TouchableOpacity
 					style={styles.Congrats}
 					onPress={this.Profile}>
-					<Text> "Continue to Profile" </Text>
+					<Text> "Edit Profile" </Text>
+				</TouchableOpacity>
+
+				<TouchableOpacity
+					style={styles.Congrats}
+					onPress={this.Profile}>
+					<Text> "Checkin" </Text>
 				</TouchableOpacity>
 
 			</View>

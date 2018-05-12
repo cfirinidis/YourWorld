@@ -27,7 +27,7 @@ export default class Login extends React.Component {
 
 		var value = await AsyncStorage.getItem('user');
 		if(value !== null){
-			this.props.navigation.navigate('Profile');
+			this.props.navigation.navigate('Profile'); //**note: Might have to replace this with Welcome
 		}
 	}
 
@@ -75,7 +75,7 @@ export default class Login extends React.Component {
 			
 	login = () => {
 
-		fetch('http://146.95.36.118:3000/users', {// sync IP address to expo application
+		fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -92,7 +92,9 @@ export default class Login extends React.Component {
 
 			if(res.success === true){
 				AsyncStorage.setItem('user', res.user);
-				this.props.navigation.navigate('Profile');
+				this.props.navigation.navigate('Profile'); //This is where we navigate to the welcome page
+				// replace profile with Welcome
+
 			}
 			else{
 				alert(res.message);

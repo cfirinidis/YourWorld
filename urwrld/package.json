@@ -23,6 +23,7 @@
     "express": "^4.16.3",
     "react": "16.2.0",
     "react-native": "0.52.0",
+    "react-native-geo-fence": "^1.0.5",
     "react-native-geo-fencing": "^0.1.0",
     "react-navigation": "^1.5.8"
   },
