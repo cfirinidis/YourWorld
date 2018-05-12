@@ -9,8 +9,8 @@ import{
 	AsyncStorage,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation'
-
-
+import Places from './Places';
+import Home from './Home';
 export default class Profile extends React.Component {
 
 	constructor(props){
@@ -39,7 +39,7 @@ export default class Profile extends React.Component {
 
 			<View style={styles.container}>
 
-				<Text style={styles.header}>urwrld</Text>
+				<Text style={styles.header}>Profile</Text>
 
 				<TextInput
 					style={styles.textInput} placeholder='Hobby'
@@ -59,15 +59,17 @@ export default class Profile extends React.Component {
 					<Text>SAVE </Text>
 				</TouchableOpacity>
 
-				<TouchableOpacity
+				{/* We dont need friends list right now
+				 <TouchableOpacity
 					style={styles.btn}
 					onPress={this.friendsList}>
 					<Text>Go To Friends List </Text>
-				</TouchableOpacity>
+				</TouchableOpacity> */}
+
 				<TouchableOpacity
 					style={styles.btn}
-					onPress={this.parkPlaces}>
-					<Text>View Location Details</Text>
+					onPress={this.homePage}>
+					<Text>Home Page {/* Button that we have for now */}</Text>
 				</TouchableOpacity>
 					
 			</View>
@@ -103,13 +105,13 @@ export default class Profile extends React.Component {
 		})
 		.done();
 	}
+	//Currenty we're not using Friends list page
+	// friendsList = () => {
+	// 	this.props.navigation.navigate('Friends');
+	// }
 
-	friendsList = () => {
-		this.props.navigation.navigate('Friends');
-	}
-
-	parkPlaces = () => {
-		this.props.navigation.navigate('Places');
+	homePage = () => {
+		this.props.navigation.navigate('Home');
 	}
 }
 

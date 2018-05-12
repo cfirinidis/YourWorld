@@ -9,6 +9,9 @@ import{
 	AsyncStorage,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
+import Home from './Home';
+
+
 
 export default class Login extends React.Component {
 
@@ -27,7 +30,7 @@ export default class Login extends React.Component {
 
 		var value = await AsyncStorage.getItem('user');
 		if(value !== null){
-			this.props.navigation.navigate('Profile'); //**note: Might have to replace this with Welcome
+			this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
 		}
 	}
 
@@ -92,7 +95,7 @@ export default class Login extends React.Component {
 
 			if(res.success === true){
 				AsyncStorage.setItem('user', res.user);
-				this.props.navigation.navigate('Profile'); //This is where we navigate to the welcome page
+				this.props.navigation.navigate('Home'); //This is where we navigate to the welcome page
 				// replace profile with Welcome
 
 			}

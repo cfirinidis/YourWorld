@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
 
 
 	connection.query(
-
+			//(?, ?, ?) prevents SQL injection
 		"INSERT INTO user ( username, password, email) VALUES (?, ?, ?)",
 		[username, password, email], function(err, row, field){
 			if(err){
