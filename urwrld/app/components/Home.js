@@ -12,8 +12,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Profile from './Profile';
 import Places from './Places';
-import Maps from './Maps';
-import Loading from './Loading';
+
 
 //The rounTo function takes in a number n as the first parameter and the number of digits as the second parameter.
 function roundTo(n, digits) {
@@ -109,7 +108,7 @@ export default class Home extends React.Component {
 			   'Content-Type': 'application/json',
 			 },
 			 body: JSON.stringify({
-			   username: AsyncStorage.getItem('user');
+			   username: AsyncStorage.getItem('user'),
 			   lat: this.state.lastLat,
 			   lng: this.state.lastLong
 			 })

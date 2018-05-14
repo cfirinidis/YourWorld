@@ -79,7 +79,7 @@ export default class Profile extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: AsyncStorage.getItem('user');
+				username: AsyncStorage.getItem('user'),
 				hobby: this.state.hobby,
 				age: this.state.age,
 			})

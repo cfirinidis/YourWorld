@@ -33,6 +33,8 @@ export default class Places extends React.Component {
     Profile = () => {
         this.props.navigation.navigate('Home');
     }
+
+/*
     // Checkout = () => {
     //	fetch('https://peaceful-woodland-41811.herokuapp.com/home/CheckOut', {// sync IP address to expo application
 			method: 'POST',
@@ -61,7 +63,10 @@ export default class Places extends React.Component {
 		})
 		.done();
 	}
-    // }
+    // } 
+
+*/
+
 }
 
 const styles = StyleSheet.create({
