@@ -9,7 +9,7 @@ import{
 
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-
+import Home from './Home';
 
 export default class SignUp extends React.Component {
 
@@ -70,7 +70,7 @@ UserRegistrationFunction = () => {
 
 	
 
-		fetch('http://146.95.77.44:3000/SignUp', { // sync IP address to expo application
+		fetch('https://peaceful-woodland-41811.herokuapp.com/api/SignUp', { // sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -86,7 +86,7 @@ UserRegistrationFunction = () => {
 		.then ((response) => response.json())
 		.then ((res) => {
 			if(res.success === true){
-				this.props.navigation.navigate('Congrats');
+				this.props.navigation.navigate('Home');
 			}
 			else{
 				alert(res.message);

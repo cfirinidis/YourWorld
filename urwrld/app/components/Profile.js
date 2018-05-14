@@ -9,7 +9,8 @@ import{
 	AsyncStorage,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation'
-
+import Places from './Places';
+import Home from './Home';
 export default class Profile extends React.Component {
 
 	constructor(props){
@@ -21,16 +22,15 @@ export default class Profile extends React.Component {
 	}
 
 	componentDidMount(){ //checks is user is logged in
-		this._loadInitialState().done();
+	 	this._loadInitialState().done();
 	}
 	_loadInitialState = async ()=> {
 
 		var value = await AsyncStorage.getItem('user');
-		if(value !== null){
-			this.props.navigation.navigate('Profile');
-		}
+	 	if(value !== null){
+	 		this.props.navigation.navigate('Profile');
+	 	}
 	}
-
 
 	render() {
 		return(
@@ -38,7 +38,7 @@ export default class Profile extends React.Component {
 
 			<View style={styles.container}>
 
-				<Text style={styles.header}>urwrld</Text>
+				<Text style={styles.header}>Profile</Text>
 
 				<TextInput
 					style={styles.textInput} placeholder='Hobby'
@@ -57,8 +57,14 @@ export default class Profile extends React.Component {
 					onPress={this.save}>
 					<Text>SAVE </Text>
 				</TouchableOpacity>
+
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.homePage}>
+					<Text>Home Page {/* Button that we have for now */}</Text>
+				</TouchableOpacity>
 					
-				</View>
+			</View>
 
 			</KeyboardAvoidingView>
 		);
@@ -66,15 +72,16 @@ export default class Profile extends React.Component {
 
 	save = () => {
 
-		fetch('http://146.95.77.44:3000/users', {// sync IP address to expo application
+		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
+				username: AsyncStorage.getItem('user');
+				hobby: this.state.hobby,
+				age: this.state.age,
 			})
 		})
 
@@ -90,6 +97,10 @@ export default class Profile extends React.Component {
 			}
 		})
 		.done();
+	}
+
+	homePage = () => {
+		this.props.navigation.navigate('Home');
 	}
 }
 
