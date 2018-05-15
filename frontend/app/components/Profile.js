@@ -23,7 +23,7 @@ export default class Profile extends React.Component {
 			age: '',
 		}
 	}
-	
+
 	componentDidMount(){ //checks is user is logged in
 	 	this._loadInitialState().done();
 	}
@@ -39,7 +39,7 @@ export default class Profile extends React.Component {
 	homePage = () => {
 		this.props.navigation.navigate('Home');
 	}
-	
+
 	save = () => {
 
 		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
