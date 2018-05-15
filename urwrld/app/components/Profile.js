@@ -8,14 +8,17 @@ import{
 	TouchableOpacity,
 	AsyncStorage,
 } from 'react-native';
+
 import { StackNavigator } from 'react-navigation'
 import Places from './Places';
 import Home from './Home';
+
 export default class Profile extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.state =  {
+			value:'',
 			hobby: '',
 			age: '',
 		}
@@ -26,10 +29,46 @@ export default class Profile extends React.Component {
 	}
 	_loadInitialState = async ()=> {
 
-		var value = await AsyncStorage.getItem('user');
-	 	if(value !== null){
-	 		this.props.navigation.navigate('Profile');
-	 	}
+		value = await AsyncStorage.getItem('user');
+		console.log(value);
+	 	//if(value !== null){
+	 	//	this.props.navigation.navigate('Home');
+	 	//}
+	}
+
+	homePage = () => {
+		this.props.navigation.navigate('Home');
+	}
+
+	save = () => {
+
+		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: value,
+				hobby: this.state.hobby,
+				age: this.state.age,
+			})
+		})
+
+		.then((response)=> response.json())
+		.then ((res) => {
+
+			if(res.success === true){
+				console.log(value+this.state.hobby+this.state.age);
+				//AsyncStorage.setItem('user', res.user);
+				this.props.navigation.navigate('Home');
+				alert("Profile saved.");
+			}
+			else{
+				console.log(res.message);
+			}
+		})
+		.done();
 	}
 
 	render() {
@@ -49,7 +88,7 @@ export default class Profile extends React.Component {
 				<TextInput
 					style={styles.textInput} placeholder='Age'
 					onChangeText={ (age)=> this.setState({age}) }
-					secureTextEntry = { true } underlineColorAndroid= 'transparent'
+					underlineColorAndroid= 'transparent'
 					/>
 
 				<TouchableOpacity
@@ -69,39 +108,6 @@ export default class Profile extends React.Component {
 			</KeyboardAvoidingView>
 		);
 	}
-
-	save = () => {
-
-		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				username: AsyncStorage.getItem('user'),
-				hobby: this.state.hobby,
-				age: this.state.age,
-			})
-		})
-
-		.then((response)=> response.json())
-		.then ((res) => {
-
-			if(res.success === true){
-				AsyncStorage.setItem('user', res.user);
-				this.props.navigation.navigate('Profile');
-			}
-			else{
-				alert(res.message);
-			}
-		})
-		.done();
-	}
-
-	homePage = () => {
-		this.props.navigation.navigate('Home');
-	}
 }
 
 const styles = StyleSheet.create({
@@ -112,7 +118,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#dc6900',
+		backgroundColor: '#8be5e1',
 		paddingLeft: 40,
 		paddingRight: 40,
 	},
