@@ -17,7 +17,6 @@ const Application = StackNavigator({
   SignUp: {screen: SignUp},
   Checkin: {screen: Checkin},
   Places: {screen: Places},
-
   }, {
     navigationOptions: {
       header: false,

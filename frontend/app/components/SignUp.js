@@ -79,6 +79,7 @@ UserRegistrationFunction = () => {
 		const { password } = this.state ;
 		const { email } = this.state ;
 
+<<<<<<< HEAD:frontend/app/components/SignUp.js
 	if(username.length<4||username.length>10){
 		alert("username must be between 4 and 10 characters");
 	}else if(password.length != 6){
