@@ -89,11 +89,7 @@ export default class Login extends React.Component {
 		alert("Invalid input");
 	   }else{
 
-<<<<<<< HEAD:frontend/app/components/Login.js
 		fetch('https://peaceful-woodland-41811.herokuapp.com/api/user', {// sync IP address to expo application
-=======
-		fetch('http://146.95.39.245:3000/users', {// sync IP address to expo application
->>>>>>> a225f1e994ac2fccd313b74e57b006787751187b:urwrld/app/components/Login.js
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
