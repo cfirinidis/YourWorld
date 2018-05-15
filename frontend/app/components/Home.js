@@ -34,7 +34,6 @@ function roundTo(n, digits) {
 
 //HOME Page
 export default class Home extends React.Component {
-		
 
 	constructor(props){
 		super(props);
@@ -70,8 +69,9 @@ export default class Home extends React.Component {
 	_loadInitialState = async ()=> {
 
 		value = await AsyncStorage.getItem('user');
-		placename = await AsyncStorage.setItem('placename', "");
-		console.log(value);
+		await AsyncStorage.setItem('placename', "passed");
+		placename = await AsyncStorage.getItem('placename');
+		console.log(placename);
 	 	//if(value !== null){
 	 	//	this.props.navigation.navigate('Home');
 	 	//}
@@ -124,15 +124,15 @@ export default class Home extends React.Component {
 
 		   })
 	   
-		.then((response)=> response.json())
-		.then ((res) => {
+		.then( (response)=> response.json())
+		.then (async (res) => {
 	   
 			if(res.success === true){
-				AsyncStorage.setItem("placename", res.message);
+				await AsyncStorage.setItem('placename', res.message);
 				alert("Checking in!");
 			}
 			else{
-				alert(res.message);
+				alert("Error checking in.");
 			}
 		})
 		.done();
@@ -155,9 +155,16 @@ export default class Home extends React.Component {
 
 				<TouchableOpacity
 					style={styles.btn}
-					onPress={this.getloc}>
+					onPress={this.getloc.bind(this)}>
 					<Text> Checkin {/*  Profile.js}	*/}</Text>
 				</TouchableOpacity>
+
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.viewLocation}>
+					<Text> View Location {/*  Profile.js}	*/}</Text>
+				</TouchableOpacity>
+
 
 			</View>
 			</KeyboardAvoidingView>
@@ -169,6 +176,18 @@ export default class Home extends React.Component {
 Profile = () => {
 		this.props.navigation.navigate('Profile');
 	}
+
+viewLocation = async () =>{
+	var location = await AsyncStorage.getItem('placename');
+	if(location!=null){
+		alert(location);
+		this.props.navigation.navigate('Place');
+
+	}else{
+		alert("Not currently checked into a location.");
+	}
+	}
+
 }
 
 const styles = StyleSheet.create({
