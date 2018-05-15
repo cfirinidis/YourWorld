@@ -88,11 +88,6 @@ UserRegistrationFunction = () => {
 		alert("Not valid email");
 	}else{
 		fetch('https://peaceful-woodland-41811.herokuapp.com/api/SignUp', { // sync IP address to expo application
-=======
-	
-
-		fetch('http://146.95.39.245:3000/SignUp', { // sync IP address to expo application
->>>>>>> a225f1e994ac2fccd313b74e57b006787751187b:urwrld/app/components/SignUp.js
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
