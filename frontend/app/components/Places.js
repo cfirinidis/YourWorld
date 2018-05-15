@@ -6,19 +6,18 @@ import Profile from './Profile';
 export default class Places extends React.Component {
     //Not sure if needed
     static navigationOptions = {
-        title: '',
+        title: 'Place',
     };
-
    
     render(){
         return(
             <KeyboardAvoidingView behavior = 'padding' style={styles.wrapper}>
                 <View style={styles.container}>
-                    <Text style={styles.header}>Location Name {/*Put location name   */}</Text> 
+                    <Text style={styles.header}>Location {/*Put location name   */}</Text> 
                     <TouchableOpacity
                         style={styles.btn}
                         onPress={this.Profile}>
-                        <Text>Back to Profile page </Text>
+                        <Text>Back to Profile </Text>
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.btn}
@@ -36,7 +35,7 @@ export default class Places extends React.Component {
 
 /*
     // Checkout = () => {
-    //	fetch('https://peaceful-woodland-41811.herokuapp.com/home/CheckOut', {// sync IP address to expo application
+    //	fetch('https://peaceful-woodland-41811.herokuapp.com/user/Viewplace', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
