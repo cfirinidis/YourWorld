@@ -24,6 +24,7 @@ export default class Profile extends React.Component {
 		}
 	}
 
+<<<<<<< HEAD:frontend/app/components/Profile.js
 	componentDidMount(){ //checks is user is logged in
 	 	this._loadInitialState().done();
 	}
@@ -39,6 +40,18 @@ export default class Profile extends React.Component {
 	homePage = () => {
 		this.props.navigation.navigate('Home');
 	}
+=======
+	// componentDidMount(){ //checks is user is logged in
+	// 	this._loadInitialState().done();
+	// }
+	// _loadInitialState = async ()=> {
+
+	// 	var value = await AsyncStorage.getItem('user');
+	// 	if(value !== null){
+	// 		this.props.navigation.navigate('Profile');
+	// 	}
+	// }
+>>>>>>> a225f1e994ac2fccd313b74e57b006787751187b:urwrld/app/components/Profile.js
 
 	save = () => {
 
@@ -99,8 +112,18 @@ export default class Profile extends React.Component {
 
 				<TouchableOpacity
 					style={styles.btn}
+<<<<<<< HEAD:frontend/app/components/Profile.js
 					onPress={this.homePage}>
 					<Text>Home Page {/* Button that we have for now */}</Text>
+=======
+					onPress={this.friendsList}>
+					<Text>Go To Friends List </Text>
+				</TouchableOpacity>
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.parkPlaces}>
+					<Text>View Park Places</Text>
+>>>>>>> a225f1e994ac2fccd313b74e57b006787751187b:urwrld/app/components/Profile.js
 				</TouchableOpacity>
 					
 			</View>
@@ -108,6 +131,45 @@ export default class Profile extends React.Component {
 			</KeyboardAvoidingView>
 		);
 	}
+<<<<<<< HEAD:frontend/app/components/Profile.js
+=======
+
+	save = () => {
+
+		fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: this.state.username,
+				password: this.state.password,
+			})
+		})
+
+		.then((response)=> response.json())
+		.then ((res) => {
+
+			if(res.success === true){
+				AsyncStorage.setItem('user', res.user);
+				this.props.navigation.navigate('Profile');
+			}
+			else{
+				alert(res.message);
+			}
+		})
+		.done();
+	}
+
+	friendsList = () => {
+		this.props.navigation.navigate('Friends');
+	}
+
+	parkPlaces = () => {
+		this.props.navigation.navigate('Places');
+	}
+>>>>>>> a225f1e994ac2fccd313b74e57b006787751187b:urwrld/app/components/Profile.js
 }
 
 const styles = StyleSheet.create({
