@@ -23,7 +23,7 @@ export default class Profile extends React.Component {
 			age: '',
 		}
 	}
-	
+
 	componentDidMount(){ //checks is user is logged in
 	 	this._loadInitialState().done();
 	}
@@ -39,7 +39,7 @@ export default class Profile extends React.Component {
 	homePage = () => {
 		this.props.navigation.navigate('Home');
 	}
-	
+
 	save = () => {
 
 		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-		backgroundColor: '#8be5e1',
+		backgroundColor: '#dc6900',
 		paddingLeft: 40,
 		paddingRight: 40,
 	},
