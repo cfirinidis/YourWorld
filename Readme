@@ -1,0 +1,23 @@
+Some tips for developing with react native. 
+
+Run npm start while in react native directory. Open expo link on iphone with exp:// link in browser. 
+
+common git commands:
+
+git checkout -b name_of_newbranch this is to switch to branches or create a new one
+
+git status tells you which branch you are currently in
+
+git add . (with the period) adds all newly edited files to be commited
+
+git commit -m "type msg for commit"
+
+git push origin branch_name pushes to your branch
+
+my branch is intergrating with heroku for the backend
+
+Because we are using react native which runs on a mobile we cannot have the front and backend code in the same repos
+
+I have included instructiosn on how to get the heroku backend repo on your machine in the herokuBackend file.
+
+
