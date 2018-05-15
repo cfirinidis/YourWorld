@@ -70,7 +70,7 @@ UserRegistrationFunction = () => {
 
 	
 
-		fetch('http://192.168.13.14:3000/SignUp', { // sync IP address to expo application
+		fetch('https://peaceful-woodland-41811.herokuapp.com/api/SignUp', { // sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',

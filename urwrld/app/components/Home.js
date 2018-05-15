@@ -7,6 +7,7 @@ import{
 	KeyboardAvoidingView,
 	TouchableOpacity,
 	AsyncStorage,
+	Image,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 
@@ -17,8 +18,10 @@ import Profile from './Profile';
 import Places from './Places';
 import Maps from './Maps';
 import Loading from './Loading';
+import Login from './Login';
 
 //The rounTo function takes in a number n as the first parameter and the number of digits as the second parameter.
+//Check for another function that rounds to 3
 //Online Source: https://stackoverflow.com/questions/15762768/javascript-math-round-to-two-decimal-places?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 function roundTo(n, digits) {
     var negative = false;
@@ -105,36 +108,12 @@ export default class Home extends React.Component {
 			this.onRegionChange(region, region.latitude, region.longitude);
 		  }
 
-
 		  getloc = () => {
-			console.log("called getloc")
-	   
-		   fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
-			 method: 'POST',
-			 headers: {
-			   'Accept': 'application/json',
-			   'Content-Type': 'application/json',
-			 },
-			 body: JSON.stringify({
-			   lat: this.state.lastLat,
-			   lng: this.state.lastLong
-			 })
-		   })
-	   
-		   .then((response)=> response.json())
-		   .then ((res) => {
-	   
-			 if(res.success === true){
-			   //AsyncStorage.setItem('user', res.user);
-			   this.props.navigation.navigate('Loading');
-			 }
-			 else{
-			   alert(res.message);
-			 }
-		   })
-		   .done();
+			this.props.navigation.navigate('Places');
 		 }//end of getloc
 	   
+	   
+		 
 	   
 
 		//   pressCheckin = () => {
@@ -173,10 +152,40 @@ export default class Home extends React.Component {
 	render() {
 		return(
 		<KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
+				{/* <Image source={require('../../img/urwrld_logo.jpg')} style={styles.img} /> */}
+				<Image
+ 					 style={{
+    				alignSelf: 'center',
+    				height: 150,
+    				width: 150,
+    				borderWidth: 1,
+						borderRadius: 75,
+						backgroundColor: '#dc6900'
+					
+  				}}
+					source={require('../../img/urwrld_logo.jpg')} 
+ 				 	resizeMode="cover"
+/>
+				{/* <Image
+  				style={{flex:1, height: undefined, width: undefined, borderRadius: 50 } }
+ 					source={require('../../img/urwrld_logo.jpg')}
+ 					resizeMode="contain"
+					/> */}
+
+				<View style ={styles.logo}>
+				</View>
 
 			<View style={styles.container}>
 
 				<Text style={styles.header}>Username {/*Note: we can add a default pic and get username from database*/}</Text>
+
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.back}>
+
+					<Text> Logout {/* This button goes to profile{this.Profile navigates to Profile.js}. Also note:
+									check for loop that causes the user to check the same condition twice*/}</Text>
+				</TouchableOpacity>
 
 
 				<TouchableOpacity
@@ -196,7 +205,9 @@ export default class Home extends React.Component {
 
 		);
 	}
-
+back = () => {
+	this.props.navigation.navigate('Login');
+}
 
 Profile = () => {
 		this.props.navigation.navigate('Profile');
@@ -212,9 +223,18 @@ Loading = () => {
 // }
 
 const styles = StyleSheet.create({
+	//Christopher: I added a background color to be orange because the logo is circular(the background was grey before) 
 	wrapper: {
 		flex: 1,
+		backgroundColor: '#dc6900',
+
 	},
+	img: {
+		display: 'flex',
+		margin: 'auto',
+		maxWidth: '100%',
+	},
+
 	container: {
 		flex: 1,
 		alignItems: 'center',

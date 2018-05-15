@@ -6,9 +6,10 @@ import Profile from './Profile';
 export default class Places extends React.Component {
     //Not sure if needed
     static navigationOptions = {
-        title: 'Profile',
+        title: '',
     };
-    
+
+   
     render(){
         return(
             <KeyboardAvoidingView behavior = 'padding' style={styles.wrapper}>
@@ -30,12 +31,40 @@ export default class Places extends React.Component {
         )
     }
     Profile = () => {
-        this.props.navigation.navigate('Profile');
+        this.props.navigation.navigate('Home');
     }
-    // Maps = () => {
-    //     this.props.navigation.navigate('Maps');
-    // }
-}
+
+
+     Checkout = () => {
+    	fetch('https://peaceful-woodland-41811.herokuapp.com/home/CheckOut', {// sync IP address to expo application
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: AsyncStorage.getItem('user'),
+				placename: AsyncStorage.getItem('placename'),
+			})
+		})
+
+		.then((response)=> response.json())
+		.then ((res) => {
+
+			if(res.success === true){
+				AsyncStorage.setItem('user', res.user);
+				this.props.navigation.navigate('Home'); //This is where we navigate to the welcome page
+				// replace profile with Welcome
+
+			}
+			else{
+				alert(res.message);
+			}
+		})
+		.done();
+	}
+} 
+
 
 const styles = StyleSheet.create({
     wrapper: {

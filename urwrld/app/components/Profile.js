@@ -21,17 +21,16 @@ export default class Profile extends React.Component {
 		}
 	}
 
-	// componentDidMount(){ //checks is user is logged in
-	// 	this._loadInitialState().done();
-	// }
-	// _loadInitialState = async ()=> {
+	componentDidMount(){ //checks is user is logged in
+	 	this._loadInitialState().done();
+	}
+	_loadInitialState = async ()=> {
 
-	// 	var value = await AsyncStorage.getItem('user');
-	// 	if(value !== null){
-	// 		this.props.navigation.navigate('Profile');
-	// 	}
-	// }
-
+		var value = await AsyncStorage.getItem('user');
+	 	if(value !== null){
+	 		this.props.navigation.navigate('Profile');
+	 	}
+	}
 
 	render() {
 		return(
@@ -59,13 +58,6 @@ export default class Profile extends React.Component {
 					<Text>SAVE </Text>
 				</TouchableOpacity>
 
-				{/* We dont need friends list right now
-				 <TouchableOpacity
-					style={styles.btn}
-					onPress={this.friendsList}>
-					<Text>Go To Friends List </Text>
-				</TouchableOpacity> */}
-
 				<TouchableOpacity
 					style={styles.btn}
 					onPress={this.homePage}>
@@ -80,15 +72,16 @@ export default class Profile extends React.Component {
 
 	save = () => {
 
-		fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
+		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: this.state.username,
-				password: this.state.password,
+				username: AsyncStorage.getItem('user'),
+				hobby: this.state.hobby,
+				age: this.state.age,
 			})
 		})
 
@@ -105,10 +98,6 @@ export default class Profile extends React.Component {
 		})
 		.done();
 	}
-	//Currenty we're not using Friends list page
-	// friendsList = () => {
-	// 	this.props.navigation.navigate('Friends');
-	// }
 
 	homePage = () => {
 		this.props.navigation.navigate('Home');

@@ -14,7 +14,6 @@ import MapView, {Callout, Circle, Marker, Polygon} from 'react-native-maps'
 import Login from './Login';
 import SignUp from './SignUp';
 import Profile from './Profile';
-import Maps from './Maps'; //We will use it as a component.
 
 let { width, height } = Dimensions.get('window');
 

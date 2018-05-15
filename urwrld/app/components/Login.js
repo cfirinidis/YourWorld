@@ -7,6 +7,7 @@ import{
 	KeyboardAvoidingView,
 	TouchableOpacity,
 	AsyncStorage,
+	Image,
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Home from './Home';
@@ -29,14 +30,27 @@ export default class Login extends React.Component {
 	_loadInitialState = async ()=> {
 
 		var value = await AsyncStorage.getItem('user');
-		if(value !== null){
-			this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
-		}
+		// if(value !== null){
+		// 	this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
+		// }
 	}
 
 	render() {
 		return(
 			<KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
+				<Image
+ 					 style={{
+    				alignSelf: 'center',
+    				height: 150,
+    				width: 150,
+    				borderWidth: 1,
+						borderRadius: 75,
+						backgroundColor: '#dc6900'
+					
+  				}}
+					source={require('../../img/urwrld_logo.jpg')} 
+ 				 	resizeMode="cover"
+/>
 
 			<View style={styles.container}>
 
@@ -78,7 +92,7 @@ export default class Login extends React.Component {
 			
 	login = () => {
 
-		fetch('http://192.168.13.14:3000/users', {// sync IP address to expo application
+		fetch('https://peaceful-woodland-41811.herokuapp.com/api/user', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
@@ -110,6 +124,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
+		backgroundColor: '#dc6900',
 	},
 	container: {
 		flex: 1,
