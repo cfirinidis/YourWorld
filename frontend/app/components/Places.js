@@ -78,10 +78,11 @@ export default class Places extends React.Component {
 		})
 
 		.then((response)=> response.json())
-		.then ((res) => {
+		.then (async(res) => {
 			if(res.success === true){
 				alert(res.message);
-				this.Profile;
+				await AsyncStorage.removeItem('placename');
+				this.Profile();
 			}
 			else{
 				alert("error with checkout");
