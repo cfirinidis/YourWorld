@@ -69,7 +69,6 @@ export default class Home extends React.Component {
 	_loadInitialState = async ()=> {
 
 		value = await AsyncStorage.getItem('user');
-		await AsyncStorage.setItem('placename', "passed");
 		placename = await AsyncStorage.getItem('placename');
 		console.log(placename);
 	 	//if(value !== null){
@@ -132,7 +131,7 @@ export default class Home extends React.Component {
 				alert("Checking in!");
 			}
 			else{
-				alert("Error checking in.");
+				alert("Error checking in. Maybe you're already checked in.");
 			}
 		})
 		.done();
@@ -165,6 +164,12 @@ export default class Home extends React.Component {
 					<Text> View Location {/*  Profile.js}	*/}</Text>
 				</TouchableOpacity>
 
+				<TouchableOpacity
+					style={styles.btn}
+					onPress={this.Logout}>
+                    			<Text> Logout {/* Thi*/}</Text>
+				</TouchableOpacity>
+
 
 			</View>
 			</KeyboardAvoidingView>
@@ -177,11 +182,15 @@ Profile = () => {
 		this.props.navigation.navigate('Profile');
 	}
 
+Logout = async () => {
+		await AsyncStorage.removeItem('username');
+		this.props.navigation.navigate('Login');
+	}
+
 viewLocation = async () =>{
 	var location = await AsyncStorage.getItem('placename');
 	if(location!=null){
-		alert(location);
-		this.props.navigation.navigate('Place');
+		this.props.navigation.navigate('Places');
 
 	}else{
 		alert("Not currently checked into a location.");
