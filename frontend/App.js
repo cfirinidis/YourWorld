@@ -17,7 +17,10 @@ const Application = StackNavigator({
   SignUp: {screen: SignUp},
   Checkin: {screen: Checkin},
   Places: {screen: Places},
+<<<<<<< HEAD:urwrld/App.js
 
+=======
+>>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/App.js
   }, {
     navigationOptions: {
       header: false,

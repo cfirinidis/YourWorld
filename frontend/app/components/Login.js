@@ -9,6 +9,7 @@ import{
 	AsyncStorage,
 	Image,
 } from 'react-native';
+
 import { StackNavigator } from 'react-navigation';
 import Home from './Home';
 
@@ -29,10 +30,17 @@ export default class Login extends React.Component {
 	}
 	_loadInitialState = async ()=> {
 
+<<<<<<< HEAD:urwrld/app/components/Login.js
 		var value = await AsyncStorage.getItem('user');
 		// if(value !== null){
 		// 	this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
 		// }
+=======
+		var value = await AsyncStorage.setItem('user', this.state.username);
+		if(value !== null){
+			this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
+		}
+>>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Login.js
 	}
 
 	render() {
@@ -53,7 +61,12 @@ export default class Login extends React.Component {
 />
 
 			<View style={styles.container}>
-
+				<Image
+					style={{alignSelf: 'center', height: 150, width: 150, borderWidth: 1,
+						borderRadius: 75, backgroundColor: '#dc6900'}}
+					source={require('../../img/urwrld_logo.jpg')}
+					resizeMode="cover"
+				/>
 				<Text style={styles.header}>urwrld</Text>
 
 				<TextInput
@@ -91,6 +104,10 @@ export default class Login extends React.Component {
 	}
 			
 	login = () => {
+		
+           if(this.state.username==""||this.state.password==""){
+		alert("Invalid input");
+	   }else{
 
 		fetch('https://peaceful-woodland-41811.herokuapp.com/api/user', {// sync IP address to expo application
 			method: 'POST',
@@ -108,16 +125,16 @@ export default class Login extends React.Component {
 		.then ((res) => {
 
 			if(res.success === true){
-				AsyncStorage.setItem('user', res.user);
-				this.props.navigation.navigate('Home'); //This is where we navigate to the welcome page
-				// replace profile with Welcome
-
+				AsyncStorage.setItem('user', this.state.username);
+				this.props.navigation.navigate('Home');
+				alert("Welcome!");
 			}
 			else{
 				alert(res.message);
 			}
 		})
 		.done();
+	   }
 	}
 }
 

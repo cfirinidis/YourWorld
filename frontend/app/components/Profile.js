@@ -8,14 +8,17 @@ import{
 	TouchableOpacity,
 	AsyncStorage,
 } from 'react-native';
+
 import { StackNavigator } from 'react-navigation'
 import Places from './Places';
 import Home from './Home';
+
 export default class Profile extends React.Component {
 
 	constructor(props){
 		super(props);
 		this.state =  {
+			value:'',
 			hobby: '',
 			age: '',
 		}
@@ -26,10 +29,46 @@ export default class Profile extends React.Component {
 	}
 	_loadInitialState = async ()=> {
 
-		var value = await AsyncStorage.getItem('user');
-	 	if(value !== null){
-	 		this.props.navigation.navigate('Profile');
-	 	}
+		value = await AsyncStorage.getItem('user');
+		console.log(value);
+	 	//if(value !== null){
+	 	//	this.props.navigation.navigate('Home');
+	 	//}
+	}
+
+	homePage = () => {
+		this.props.navigation.navigate('Home');
+	}
+
+	save = () => {
+
+		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: value,
+				hobby: this.state.hobby,
+				age: this.state.age,
+			})
+		})
+
+		.then((response)=> response.json())
+		.then ((res) => {
+
+			if(res.success === true){
+				console.log(value+this.state.hobby+this.state.age);
+				//AsyncStorage.setItem('user', res.user);
+				this.props.navigation.navigate('Home');
+				alert("Profile saved.");
+			}
+			else{
+				console.log(res.message);
+			}
+		})
+		.done();
 	}
 
 	render() {
@@ -49,7 +88,7 @@ export default class Profile extends React.Component {
 				<TextInput
 					style={styles.textInput} placeholder='Age'
 					onChangeText={ (age)=> this.setState({age}) }
-					secureTextEntry = { true } underlineColorAndroid= 'transparent'
+					underlineColorAndroid= 'transparent'
 					/>
 
 				<TouchableOpacity
@@ -69,6 +108,7 @@ export default class Profile extends React.Component {
 			</KeyboardAvoidingView>
 		);
 	}
+<<<<<<< HEAD:urwrld/app/components/Profile.js
 
 	save = () => {
 
@@ -102,6 +142,8 @@ export default class Profile extends React.Component {
 	homePage = () => {
 		this.props.navigation.navigate('Home');
 	}
+=======
+>>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Profile.js
 }
 
 const styles = StyleSheet.create({
