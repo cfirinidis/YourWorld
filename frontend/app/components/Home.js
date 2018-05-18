@@ -12,6 +12,7 @@ import { StackNavigator } from 'react-navigation';
 
 import Profile from './Profile';
 import Places from './Places';
+import CreatePlace from './CreatePlace';
 
 //The rounTo function takes in a number n as the first parameter and the number of digits as the second parameter.
 function roundTo(n, digits) {
@@ -166,8 +167,14 @@ export default class Home extends React.Component {
 
 				<TouchableOpacity
 					style={styles.btn}
+					onPress={this.createPlace}>
+                	<Text> Create Place {/* Thi*/}</Text>
+				</TouchableOpacity>
+
+				<TouchableOpacity
+					style={styles.btn}
 					onPress={this.Logout}>
-                    			<Text> Logout {/* Thi*/}</Text>
+                	<Text> Logout {/* Thi*/}</Text>
 				</TouchableOpacity>
 
 
@@ -177,16 +184,18 @@ export default class Home extends React.Component {
 		);
 	}
 
-
+//This method is called by the onPress() for the Profile button
 Profile = () => {
 		this.props.navigation.navigate('Profile');
 	}
 
+	//This method is called by the onPress() for the logout button
 Logout = async () => {
 		await AsyncStorage.removeItem('username');
 		this.props.navigation.navigate('Login');
 	}
 
+//The viewLocation method is called by the onPress() for the View Location button. 
 viewLocation = async () =>{
 	var location = await AsyncStorage.getItem('placename');
 	if(location!=null){
@@ -197,7 +206,14 @@ viewLocation = async () =>{
 	}
 	}
 
+	//This method is called by the onPress function for the Check In button
+	createPlace = () => {
+		this.props.navigation.navigate('CreatePlace');
+	}
+
 }
+
+
 
 const styles = StyleSheet.create({
 	wrapper: {

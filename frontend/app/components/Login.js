@@ -39,6 +39,19 @@ export default class Login extends React.Component {
 	render() {
 		return(
 			<KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
+				{/* <Image
+ 					 style={{
+    				alignSelf: 'center',
+    				height: 150,
+    				width: 150,
+    				borderWidth: 1,
+						borderRadius: 75,
+						backgroundColor: '#dc6900'
+					
+  				}}
+					source={require('../../img/urwrld_logo.jpg')} 
+ 				 	resizeMode="cover"
+/> */}
 
 			<View style={styles.container}>
 				<Image
@@ -121,6 +134,7 @@ export default class Login extends React.Component {
 const styles = StyleSheet.create({
 	wrapper: {
 		flex: 1,
+		backgroundColor: '#dc6900',
 	},
 	container: {
 		flex: 1,

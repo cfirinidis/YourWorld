@@ -122,7 +122,6 @@ export default class Checkin extends React.Component {
               {/* <Maps region= {this.state.region} watchID = {this.watchID} 
               accessCurrentPosition = {this.accessCurrentPosition} 
              _clearWatchPosition = {this._clearWatchPosition} _isInPolygon = {this._isInPolygon}
-
             /> */}
 
             </View>
@@ -169,4 +168,3 @@ const styles = StyleSheet.create({
     //  botttom: 0
     } 
   });
-  

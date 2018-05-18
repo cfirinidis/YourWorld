@@ -7,6 +7,7 @@ import SignUp from './app/components/SignUp';
 import Places from './app/components/Places'
 import Checkin from './app/components/Checkin'
 import Home from './app/components/Home'
+import CreatePlace from './app/components/CreatePlace'
 
 //Note: we changed Home: {screen: Login} to Login: { screen: Login}
 const Application = StackNavigator({
@@ -17,6 +18,7 @@ const Application = StackNavigator({
   SignUp: {screen: SignUp},
   Checkin: {screen: Checkin},
   Places: {screen: Places},
+  CreatePlace: {screen: CreatePlace},
   }, {
     navigationOptions: {
       header: false,
