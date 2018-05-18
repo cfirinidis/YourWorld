@@ -7,6 +7,7 @@ import SignUp from './app/components/SignUp';
 import Places from './app/components/Places'
 import Checkin from './app/components/Checkin'
 import Home from './app/components/Home'
+import CreatePlace from './app/components/CreatePlace'
 
 //Note: we changed Home: {screen: Login} to Login: { screen: Login}
 const Application = StackNavigator({
@@ -17,10 +18,7 @@ const Application = StackNavigator({
   SignUp: {screen: SignUp},
   Checkin: {screen: Checkin},
   Places: {screen: Places},
-<<<<<<< HEAD:urwrld/App.js
-
-=======
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/App.js
+  CreatePlace: {screen: CreatePlace},
   }, {
     navigationOptions: {
       header: false,

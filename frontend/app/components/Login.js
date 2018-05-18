@@ -30,23 +30,16 @@ export default class Login extends React.Component {
 	}
 	_loadInitialState = async ()=> {
 
-<<<<<<< HEAD:urwrld/app/components/Login.js
-		var value = await AsyncStorage.getItem('user');
-		// if(value !== null){
-		// 	this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
-		// }
-=======
 		var value = await AsyncStorage.setItem('user', this.state.username);
 		if(value !== null){
 			this.props.navigation.navigate('Home'); //***note: Might have to replace Profile with Home
 		}
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Login.js
 	}
 
 	render() {
 		return(
 			<KeyboardAvoidingView behavior='padding' style={styles.wrapper}>
-				<Image
+				{/* <Image
  					 style={{
     				alignSelf: 'center',
     				height: 150,
@@ -58,7 +51,7 @@ export default class Login extends React.Component {
   				}}
 					source={require('../../img/urwrld_logo.jpg')} 
  				 	resizeMode="cover"
-/>
+/> */}
 
 			<View style={styles.container}>
 				<Image

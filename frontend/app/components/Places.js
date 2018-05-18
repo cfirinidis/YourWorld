@@ -1,42 +1,34 @@
 import React from 'react';
-import {Text, View, Button, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import {Text, View, Button, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, AsyncStorage,} from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Profile from './Profile';
+import Home from './Home';
 
 export default class Places extends React.Component {
     //Not sure if needed
     static navigationOptions = {
-<<<<<<< HEAD:urwrld/app/components/Places.js
-        title: '',
-    };
-
-=======
         title: 'Place',
     };
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Places.js
-   
+  
     render(){
         return(
             <KeyboardAvoidingView behavior = 'padding' style={styles.wrapper}>
                 <View style={styles.container}>
-<<<<<<< HEAD:urwrld/app/components/Places.js
-                    <Text style={styles.header}>Location Name {/*Put location name   */}</Text> 
-                    <TouchableOpacity
-                        style={styles.btn}
-                        onPress={this.Profile}>
-                        <Text>Back to Profile page </Text>
-=======
                     <Text style={styles.header}>Location {/*Put location name   */}</Text> 
                     <TouchableOpacity
                         style={styles.btn}
                         onPress={this.Profile}>
                         <Text>Back to Profile </Text>
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Places.js
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.btn}
-                         onPress={this.Profile}>  
-                        <Text>Checkout {/*Add functionality for checkout  */}</Text> 
+                         onPress={this.viewUsers}>  
+                        <Text>View Users at Location {/*Add functionality for checkout  */}</Text> 
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={styles.btn}
+                        onPress={this.Checkout}>
+                        <Text>Checkout of Location </Text>
                     </TouchableOpacity>
                 </View>
             </KeyboardAvoidingView>
@@ -47,49 +39,59 @@ export default class Places extends React.Component {
         this.props.navigation.navigate('Home');
     }
 
-<<<<<<< HEAD:urwrld/app/components/Places.js
-
-     Checkout = () => {
-    	fetch('https://peaceful-woodland-41811.herokuapp.com/home/CheckOut', {// sync IP address to expo application
-=======
-/*
-    // Checkout = () => {
-    //	fetch('https://peaceful-woodland-41811.herokuapp.com/user/Viewplace', {// sync IP address to expo application
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Places.js
+   viewUsers = async () => {
+    fetch('https://peaceful-woodland-41811.herokuapp.com/user/Viewplace', {// sync IP address to expo application
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: AsyncStorage.getItem('user'),
-				placename: AsyncStorage.getItem('placename'),
+				placename: await AsyncStorage.getItem('placename'),
+			})
+		})
+
+		.then((response)=> response.json())
+		.then (async (res) => {
+			if(res.success === true){
+				alert(res.user);
+			}
+			else{
+				var ass=await AsyncStorage.getItem('placename');
+				alert(ass);
+			}
+		})
+		.done();
+	}
+
+   Checkout = async () => {
+    fetch('https://peaceful-woodland-41811.herokuapp.com/home/CheckOut', {// sync IP address to expo application
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				username: await AsyncStorage.getItem('user'),
+				placename: await AsyncStorage.getItem('placename'),
 			})
 		})
 
 		.then((response)=> response.json())
 		.then ((res) => {
-
 			if(res.success === true){
-				AsyncStorage.setItem('user', res.user);
-				this.props.navigation.navigate('Home'); //This is where we navigate to the welcome page
-				// replace profile with Welcome
-
+				alert(res.message);
+				this.Profile;
 			}
 			else{
-				alert(res.message);
+				alert("error with checkout");
 			}
 		})
 		.done();
 	}
+
 } 
 
-<<<<<<< HEAD:urwrld/app/components/Places.js
-=======
-*/
-
-}
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Places.js
 
 const styles = StyleSheet.create({
     wrapper: {
@@ -121,4 +123,4 @@ const styles = StyleSheet.create({
         padding:20,
         alignItems: 'center',
     },
-});	
+});

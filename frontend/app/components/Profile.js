@@ -108,42 +108,6 @@ export default class Profile extends React.Component {
 			</KeyboardAvoidingView>
 		);
 	}
-<<<<<<< HEAD:urwrld/app/components/Profile.js
-
-	save = () => {
-
-		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Profile', {// sync IP address to expo application
-			method: 'POST',
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				username: AsyncStorage.getItem('user'),
-				hobby: this.state.hobby,
-				age: this.state.age,
-			})
-		})
-
-		.then((response)=> response.json())
-		.then ((res) => {
-
-			if(res.success === true){
-				AsyncStorage.setItem('user', res.user);
-				this.props.navigation.navigate('Profile');
-			}
-			else{
-				alert(res.message);
-			}
-		})
-		.done();
-	}
-
-	homePage = () => {
-		this.props.navigation.navigate('Home');
-	}
-=======
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/Profile.js
 }
 
 const styles = StyleSheet.create({

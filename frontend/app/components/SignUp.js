@@ -79,10 +79,6 @@ UserRegistrationFunction = () => {
 		const { password } = this.state ;
 		const { email } = this.state ;
 
-<<<<<<< HEAD:urwrld/app/components/SignUp.js
-	
-
-=======
 	if(username.length<4||username.length>10){
 		alert("username must be between 4 and 10 characters");
 	}else if(password.length != 6){
@@ -90,7 +86,6 @@ UserRegistrationFunction = () => {
 	}else if(!validateEmail(email)){
 		alert("Not valid email");
 	}else{
->>>>>>> 20e932ce49f234488b9491ccfc68544e3f1c6430:frontend/app/components/SignUp.js
 		fetch('https://peaceful-woodland-41811.herokuapp.com/api/SignUp', { // sync IP address to expo application
 			method: 'POST',
 			headers: {
