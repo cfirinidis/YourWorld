@@ -104,7 +104,7 @@ export default class CreatePlace extends React.Component {
 		}
 		this.onRegionChange(region, region.latitude, region.longitude);
 		}
-
+	//This method navigates to the home page(home.js)
 	homePage = () => {
 		this.props.navigation.navigate('Home');
 	}

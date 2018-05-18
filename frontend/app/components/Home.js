@@ -184,16 +184,18 @@ export default class Home extends React.Component {
 		);
 	}
 
-
+//This method is called by the onPress() for the Profile button
 Profile = () => {
 		this.props.navigation.navigate('Profile');
 	}
 
+	//This method is called by the onPress() for the logout button
 Logout = async () => {
 		await AsyncStorage.removeItem('username');
 		this.props.navigation.navigate('Login');
 	}
 
+//The viewLocation method is called by the onPress() for the View Location button. 
 viewLocation = async () =>{
 	var location = await AsyncStorage.getItem('placename');
 	if(location!=null){
@@ -204,6 +206,7 @@ viewLocation = async () =>{
 	}
 	}
 
+	//This method is called by the onPress function for the Check In button
 	createPlace = () => {
 		this.props.navigation.navigate('CreatePlace');
 	}
