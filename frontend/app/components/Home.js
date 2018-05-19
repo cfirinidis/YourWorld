@@ -118,8 +118,10 @@ export default class Home extends React.Component {
 			 },
 			 body: JSON.stringify({
 			 	username: value,
-			 	lat: roundTo(this.state.lastLat, 3),
-			 	long: roundTo(this.state.lastLong, 3)
+				 lat: roundTo(this.state.lastLat, 3), // we call the roundTo function to round the latitude to
+				 									  // 3 decimal places
+				 long: roundTo(this.state.lastLong, 3) // we call the roundTo function to round the longitude to 
+				 										// 3 decimal places
 			 })
 
 		   })

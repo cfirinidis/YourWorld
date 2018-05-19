@@ -98,6 +98,8 @@ export default class Login extends React.Component {
 			
 	login = () => {
 		
+		console.log('username in lowercase ' + this.state.username.toLowerCase());
+		
            if(this.state.username==""||this.state.password==""){
 		alert("Invalid input");
 	   }else{
