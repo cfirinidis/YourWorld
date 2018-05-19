@@ -97,8 +97,9 @@ export default class Login extends React.Component {
 	}
 			
 	login = () => {
-		
-		console.log('username in lowercase ' + this.state.username.toLowerCase());
+
+		// we output the username in lowercase to test the toLowerCase() function.
+		console.log('username in lowercase ' + this.state.username.toLowerCase()); 
 		
            if(this.state.username==""||this.state.password==""){
 		alert("Invalid input");
@@ -111,7 +112,9 @@ export default class Login extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: this.state.username,
+				//we set the username in the JSON data to lower to ensure that there's no other usernames with the name
+				//letters(regardless of having different upper or lower case letters)
+				username: this.state.username.toLowerCase(),
 				password: this.state.password,
 			})
 		})

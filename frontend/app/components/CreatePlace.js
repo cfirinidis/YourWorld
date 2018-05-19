@@ -122,7 +122,7 @@ export default class CreatePlace extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				//we set the placename in the JSON data to lower to ensure that there's no other usernames with the name
+				//we set the placename in the JSON data to lower to ensure that there's no other placenames with the name
 				//letters(regardless of having different upper or lower case letters)
 				placename: this.state.placename.toLowerCase(),
 				lat: roundTo(this.state.lastLat, 3), // rounds the latitude to 3 
