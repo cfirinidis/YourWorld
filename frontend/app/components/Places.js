@@ -79,9 +79,11 @@ export default class Places extends React.Component {
 
 		.then((response)=> response.json())
 		.then ((res) => {
+            // if the json response from the backend returns true, then we will navigate back to the home page
 			if(res.success === true){
 				alert(res.message);
-				this.Profile;
+                this.Profile();
+                
 			}
 			else{
 				alert("error with checkout");
