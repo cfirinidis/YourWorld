@@ -152,7 +152,7 @@ export default class Home extends React.Component {
 				<TouchableOpacity
 					style={styles.btn}
 					onPress={this.Profile}>
-                    			<Text> Edit Profile {/* Thi*/}</Text>
+                    <Text> Edit Profile {/* Thi*/}</Text>
 				</TouchableOpacity>
 
 				<TouchableOpacity
