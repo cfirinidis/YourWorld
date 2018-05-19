@@ -40,7 +40,8 @@ export default class CreatePlace extends React.Component {
 	constructor(props){
 		super(props);
 		//This state initializes a placename for the location that the user will create. The latitude and longitude 
-		// state variables are based on the current user latitude and longitude.
+		// state variables are based on the current user latitude and longitude. userLatitude and userLongitude are 
+		// outputted to the screen and are used for testing.
 		this.state =  {
 			placename:'',
 			mapRegion: null,
@@ -111,7 +112,7 @@ export default class CreatePlace extends React.Component {
 
 	Create = () => {
 		console.log('\n\ncreating location\n');
-		const { placename } = this.state ;
+		console.log('placename in lowercase ' + this.state.placename.toLowerCase());
 		
 
 		fetch('https://peaceful-woodland-41811.herokuapp.com/user/Place', {// sync IP address to expo application
@@ -121,10 +122,11 @@ export default class CreatePlace extends React.Component {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				placename: this.state.placename,
-				lat: roundTo(this.state.lastLat, 3),
-			 	long: roundTo(this.state.lastLong, 3),
-
+				//we set the placename in the JSON data to lower to ensure that there's no other placenames with the name
+				//letters(regardless of having different upper or lower case letters)
+				placename: this.state.placename.toLowerCase(),
+				lat: roundTo(this.state.lastLat, 3), // rounds the latitude to 3 
+			 	long: roundTo(this.state.lastLong, 3), // rounds the longitude to 3
 			})
 		})
 
