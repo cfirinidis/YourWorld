@@ -1,3 +1,36 @@
+Application name: UrWrld
+
+Created by: Constantine F., Chris F., and Chris H. 
+
+School: Hunter College 
+
+COurse: Senior Capstone 
+
+Semester: Spring 2018
+
+
+
+Our app UrWrld can allow a user to check in and check out of a location.  
+
+It allows them to enter an age and hobby on their profile and save it in our database.  It allows a user, once logged in, to create a place for other users to check in and out of.  
+
+Once they are checked in to a location they can view other users that are currently checked in as well. 
+
+
+
+Our app uses React-Native frontend with a Node.js and Express.js backend. 
+
+Our backend is hosted and deployed on Heroku.  
+
+Our database is a Mysql db using the heroku add-on, Cleardb. 
+
+
+
+
+
+
+
+##########################################
 Some tips for developing with react native. 
 
 Run npm start while in react native directory. Open expo link on iphone with exp:// link in browser. 
@@ -18,6 +51,8 @@ my branch is intergrating with heroku for the backend
 
 Because we are using react native which runs on a mobile we cannot have the front and backend code in the same repos
 
-I have included instructiosn on how to get the heroku backend repo on your machine in the herokuBackend file.
+I have included instructions on how to get the heroku backend repo on your machine in the herokuBackend file.
+
+
 
 
