@@ -79,6 +79,9 @@ UserRegistrationFunction = () => {
 		const { password } = this.state ;
 		const { email } = this.state ;
 
+		// we output the username in lowercase to test the toLowerCase() function.
+		console.log('username in lowercase ' + this.state.username.toLowerCase()); 
+
 	if(username.length<4||username.length>10){
 		alert("username must be between 4 and 10 characters");
 	}else if(password.length != 6){
@@ -93,7 +96,7 @@ UserRegistrationFunction = () => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: this.state.username,
+				username: this.state.username.toLowerCase(),
 				password: this.state.password,
 				email: this.state.email,
 			})

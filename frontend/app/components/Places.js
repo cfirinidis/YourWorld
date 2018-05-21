@@ -78,11 +78,12 @@ export default class Places extends React.Component {
 		})
 
 		.then((response)=> response.json())
-		.then (async(res) => {
+		.then ((res) => {
+            // if the json response from the backend returns true, then we will navigate back to the home page
 			if(res.success === true){
 				alert(res.message);
-				await AsyncStorage.removeItem('placename');
-				this.Profile();
+                this.Profile();
+                
 			}
 			else{
 				alert("error with checkout");
@@ -124,4 +125,4 @@ const styles = StyleSheet.create({
         padding:20,
         alignItems: 'center',
     },
-});	
+});
