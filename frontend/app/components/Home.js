@@ -67,14 +67,11 @@ export default class Home extends React.Component {
 		  this.onRegionChange(region, region.latitude, region.longitude);
 		});
 	  }
+
 	_loadInitialState = async ()=> {
 
 		value = await AsyncStorage.getItem('user');
 		placename = await AsyncStorage.getItem('placename');
-		console.log(placename);
-	 	//if(value !== null){
-	 	//	this.props.navigation.navigate('Home');
-	 	//}
 	}
 		
 	onRegionChange(region, lastLat, lastLong) {
@@ -119,7 +116,7 @@ export default class Home extends React.Component {
 			 body: JSON.stringify({
 			 	username: value,
 				 lat: roundTo(this.state.lastLat, 3), // we call the roundTo function to round the latitude to
-				 									  // 3 decimal places
+										  // 3 decimal places
 				 long: roundTo(this.state.lastLong, 3) // we call the roundTo function to round the longitude to 
 				 										// 3 decimal places
 			 })
@@ -194,6 +191,7 @@ Profile = () => {
 	//This method is called by the onPress() for the logout button
 Logout = async () => {
 		await AsyncStorage.removeItem('username');
+		await AsyncStorage.setItem('placename', "");
 		this.props.navigation.navigate('Login');
 	}
 

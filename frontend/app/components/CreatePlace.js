@@ -134,8 +134,6 @@ export default class CreatePlace extends React.Component {
 		.then ((res) => {
 
 			if(res.success === true){
-				console.log(value+this.state.hobby+this.state.age);
-				//AsyncStorage.setItem('user', res.user);
 				this.props.navigation.navigate('Home');
 				alert("Location created and saved.");
 			}

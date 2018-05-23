@@ -78,11 +78,12 @@ export default class Places extends React.Component {
 		})
 
 		.then((response)=> response.json())
-		.then ((res) => {
+		.then (async (res) => {
             // if the json response from the backend returns true, then we will navigate back to the home page
 			if(res.success === true){
 				alert(res.message);
-                this.Profile();
+				await AsyncStorage.setItem('placename', "");
+                		this.Profile();
                 
 			}
 			else{
